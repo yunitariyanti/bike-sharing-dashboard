@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 
-hour_df = pd.read_csv("E:/venv/.venv/Scripts/hour_df.csv")
+hour_df = pd.read_csv("https://drive.google.com/file/d/1xfzuFZxkV6-8MPiOEEv77zsIzniDgXTH/view?usp=sharing")
 hour_df['date'] = pd.to_datetime(hour_df['date'])
 
 def performa_persewaan_sepeda(df):
