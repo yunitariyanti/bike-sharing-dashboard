@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 
-hour_df = pd.read_csv("hour_df.csv")
+hour_df = pd.read_csv("dashboard/hour_df.csv")
 hour_df['date'] = pd.to_datetime(hour_df['date'])
 
 def performa_persewaan_sepeda(df):
@@ -54,7 +54,7 @@ min_date = hour_df['date'].min()
 max_date = hour_df['date'].max()
 
 with st.sidebar:
-    st.image("bike-sharing.jpg")
+    st.image("dashboard/bike-sharing.jpg")
 
     start_date, end_date = st.date_input(
         label='Jangka Waktu',
