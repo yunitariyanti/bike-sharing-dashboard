@@ -3,8 +3,18 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 
-hour_df = pd.read_csv("https://drive.google.com/file/d/1xfzuFZxkV6-8MPiOEEv77zsIzniDgXTH/view?usp=sharing")
-hour_df['date'] = pd.to_datetime(hour_df['date'])
+def read_csv_from_url(url):
+    return pd.read_csv(url)
+
+url = st.text_input("https://drive.google.com/file/d/1xfzuFZxkV6-8MPiOEEv77zsIzniDgXTH/view?usp=sharing")
+if url: 
+    try:
+        df = read_csv_from_url(url)
+        st.write(df)
+    except Exception as e:
+        st.error(f"Error reading csv: {e}")
+        
+#hour_df['date'] = pd.to_datetime(hour_df['date'])
 
 def performa_persewaan_sepeda(df):
     performa_df = df.resample(rule='ME', on='date').agg({
