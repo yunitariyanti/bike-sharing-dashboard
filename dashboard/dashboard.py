@@ -3,18 +3,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 
-def read_csv_from_url(url):
-    return pd.read_csv(url)
-
-url = st.text_input("https://drive.google.com/file/d/1xfzuFZxkV6-8MPiOEEv77zsIzniDgXTH/view?usp=sharing")
-if url: 
-    try:
-        df = read_csv_from_url(url)
-        st.write(df)
-    except Exception as e:
-        st.error(f"Error reading csv: {e}")
-        
-#hour_df['date'] = pd.to_datetime(hour_df['date'])
+hour_df = pd.read_csv("hour_df.csv")
+hour_df['date'] = pd.to_datetime(hour_df['date'])
 
 def performa_persewaan_sepeda(df):
     performa_df = df.resample(rule='ME', on='date').agg({
@@ -64,7 +54,7 @@ min_date = hour_df['date'].min()
 max_date = hour_df['date'].max()
 
 with st.sidebar:
-    st.image("E:/venv/.venv/Scripts/bike-sharing.jpg")
+    st.image("bike-sharing.jpg")
 
     start_date, end_date = st.date_input(
         label='Jangka Waktu',
